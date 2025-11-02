@@ -1,6 +1,7 @@
-# Nu sunt necesare dependențe externe
-# Programul folosește doar Python 3.6+ standard library
-
-# Pentru dezvoltare (opțional):
-# pytest>=7.0.0  # pentru testing
-# black>=22.0.0  # pentru formatare cod
+streamlit>=1.28.0
+pandas>=2.0.0
+numpy>=1.24.0
+plotly>=5.14.0
+scikit-learn>=1.3.0
+scipy>=1.11.0
+numba>=0.58.0
