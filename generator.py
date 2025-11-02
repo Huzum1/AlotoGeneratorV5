@@ -150,7 +150,7 @@ def fast_score_variant_v4(variant, frequencies, pair_matrix, triplet_scores, gap
     # 2. Frequency (15 pts)
     freq_sum = np.sum(frequencies[variant])
     if freq_max > 0:
-        score += (freq_sum / freq.
+        score += (freq_sum / freq)
 
     # 3. ML (15 pts)
     ml_sum = np.sum(ml_probs[variant])
