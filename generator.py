@@ -1,23 +1,24 @@
+from collections import defaultdict
 """
-đ˛ LOTTERY ANALYZER PRO - ULTIMATE EDITION v5.1 đ˛
+👛 LOTTERY ANALYZER PRO - ULTIMATE EDITION v5.1
 ===================================================
-â V5.0 + PERFORMANCE OPTIMIZATIONS:
-1. â TRIPLETS Scoring (20 pts) - CEL MAI IMPORTANT pentru 4/4!
-2. â Indexare corectÄ (n-1) pentru toate array-urile
-3. â Deduplication pentru optimizare
-4. đ Reinforcement Learning (Q-Learning) - optimized to 20 episodes
-5. đ Ensemble Methods (Meta-Model)
-6. đ Advanced Feature Engineering
-7. đ Bayesian Optimization (offline/cached - optional)
-8. đ Time Series Cross-Validation (adaptive decay)
-9. đ Pattern Mining (Apriori/FP-Growth)
-10. âĄ Markov vectorized with numpy (faster)
-11. âĄ Thread-safe scoring (array copying)
-12. âĄ Reduced computational overhead
+✅ V5.0 + PERFORMANCE OPTIMIZATIONS:
+1. ✅ TRIPLETS Scoring (20 pts) - CEL MAI IMPORTANT pentru 4/4!
+2. ✅ Indexare corectă (n-1) pentru toate array-urile
+3. ✅ Deduplication pentru optimizare
+4. 🤖 Reinforcement Learning (Q-Learning) - optimized to 20 episodes
+5. 🤖 Ensemble Methods (Meta-Model)
+6. 🤖 Advanced Feature Engineering
+7. 🤖 Bayesian Optimization (offline/cached - optional)
+8. 🤖 Time Series Cross-Validation (adaptive decay)
+9. 🤖 Pattern Mining (Apriori/FP-Growth)
+10. ✨ Markov vectorized with numpy (faster)
+11. ✨ Thread-safe scoring (array copying)
+12. ✨ Reduced computational overhead
 
 Version: 5.1.0 - Optimized Advanced ML Edition
 Date: November 1, 2025
-Status: â All Technologies + Performance Optimizations
+Status: ✅ All Technologies + Performance Optimizations
 """
 
 import streamlit as st
@@ -44,12 +45,11 @@ try:
     NUMBA_AVAILABLE = True
 except ImportError:
     NUMBA_AVAILABLE = False
-    st.warning("â ď¸ Numba not installed. Install: pip install numba")
+    st.warning("⚠ 🤖 Numba not installed. Install: pip install numba")
     def jit(*args, **kwargs):
         def decorator(func):
             return func
         return decorator
-    prange = range
 
 try:
     from sklearn.decomposition import PCA
