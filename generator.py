@@ -28,7 +28,6 @@ from itertools import combinations
 import random
 import json
 from datetime import datetime
-import plotly.express as px
 import plotly.graph_objects as go
 from functools import lru_cache
 from concurrent.futures import ThreadPoolExecutor
@@ -1344,6 +1343,13 @@ class LotteryAnalyzer:
                 except (ValueError, IndexError):
                     continue
         
+        # Limit to last 3000 draws for memory
+        if len(self.draws) > 3000:
+            self.draws = self.draws[-3000:]
+            self.all_numbers_list = []
+            for draw in self.draws:
+                self.all_numbers_list.extend(draw)
+        
         if self.draws:
             self._analyze_v4()
             self.ml_predictor = MLPredictor(self.draws)
@@ -2372,7 +2378,7 @@ with tab1:
             status_text.text("📊 Step 1/4: Pool (8500)...")
             progress_bar.progress(10)
             
-            pool_size = 8500
+            pool_size = 4000
             variants_pool = []
             
             strategies_config = [
