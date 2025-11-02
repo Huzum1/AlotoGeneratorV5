@@ -1,0 +1,6 @@
+# Nu sunt necesare dependențe externe
+# Programul folosește doar Python 3.6+ standard library
+
+# Pentru dezvoltare (opțional):
+# pytest>=7.0.0  # pentru testing
+# black>=22.0.0  # pentru formatare cod
