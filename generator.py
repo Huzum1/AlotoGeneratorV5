@@ -1,23 +1,23 @@
 """
-🎲 LOTTERY ANALYZER PRO - ULTIMATE EDITION v5.1 🎲
+đ˛ LOTTERY ANALYZER PRO - ULTIMATE EDITION v5.1 đ˛
 ===================================================
-✅ V5.0 + PERFORMANCE OPTIMIZATIONS:
-1. ✅ TRIPLETS Scoring (20 pts) - CEL MAI IMPORTANT pentru 4/4!
-2. ✅ Indexare corectă (n-1) pentru toate array-urile
-3. ✅ Deduplication pentru optimizare
-4. 🆕 Reinforcement Learning (Q-Learning) - optimized to 20 episodes
-5. 🆕 Ensemble Methods (Meta-Model)
-6. 🆕 Advanced Feature Engineering
-7. 🆕 Bayesian Optimization (offline/cached - optional)
-8. 🆕 Time Series Cross-Validation (adaptive decay)
-9. 🆕 Pattern Mining (Apriori/FP-Growth)
-10. ⚡ Markov vectorized with numpy (faster)
-11. ⚡ Thread-safe scoring (array copying)
-12. ⚡ Reduced computational overhead
+â V5.0 + PERFORMANCE OPTIMIZATIONS:
+1. â TRIPLETS Scoring (20 pts) - CEL MAI IMPORTANT pentru 4/4!
+2. â Indexare corectÄ (n-1) pentru toate array-urile
+3. â Deduplication pentru optimizare
+4. đ Reinforcement Learning (Q-Learning) - optimized to 20 episodes
+5. đ Ensemble Methods (Meta-Model)
+6. đ Advanced Feature Engineering
+7. đ Bayesian Optimization (offline/cached - optional)
+8. đ Time Series Cross-Validation (adaptive decay)
+9. đ Pattern Mining (Apriori/FP-Growth)
+10. âĄ Markov vectorized with numpy (faster)
+11. âĄ Thread-safe scoring (array copying)
+12. âĄ Reduced computational overhead
 
 Version: 5.1.0 - Optimized Advanced ML Edition
 Date: November 1, 2025
-Status: ✅ All Technologies + Performance Optimizations
+Status: â All Technologies + Performance Optimizations
 """
 
 import streamlit as st
@@ -44,7 +44,7 @@ try:
     NUMBA_AVAILABLE = True
 except ImportError:
     NUMBA_AVAILABLE = False
-    st.warning("⚠️ Numba not installed. Install: pip install numba")
+    st.warning("â ď¸ Numba not installed. Install: pip install numba")
     def jit(*args, **kwargs):
         def decorator(func):
             return func
@@ -60,7 +60,7 @@ try:
     SKLEARN_AVAILABLE = True
 except ImportError:
     SKLEARN_AVAILABLE = False
-    st.warning("⚠️ Scikit-learn not installed. Install: pip install scikit-learn")
+    st.warning("â ď¸ Scikit-learn not installed. Install: pip install scikit-learn")
 
 try:
     from scipy.optimize import differential_evolution
@@ -68,7 +68,7 @@ try:
     SCIPY_AVAILABLE = True
 except ImportError:
     SCIPY_AVAILABLE = False
-    st.warning("⚠️ Scipy not installed. Install: pip install scipy")
+    st.warning("â ď¸ Scipy not installed. Install: pip install scipy")
 
 # ============================================================================
 # NUMBA JIT OPTIMIZED FUNCTIONS
@@ -113,7 +113,7 @@ def fast_calculate_pairs_weighted(draws_array, weights):
 def fast_calculate_triplets_weighted(draws_array, weights):
     """v4: NEW! Calculate weighted triplet frequencies"""
     # Use hash map for triplets (flattened 3D array)
-    # For 66 numbers: max index = 66*67*68/6 ≈ 50,000
+    # For 66 numbers: max index = 66*67*68/6 â 50,000
     triplet_scores = np.zeros(50000, dtype=np.float64)
     
     for i in prange(len(draws_array)):
@@ -166,12 +166,12 @@ def fast_score_variant_v4(variant, frequencies, pair_matrix, triplet_scores, gap
     v4: NEW SCORING with Triplets + Statistical Sum Range
     
     SCORING BREAKDOWN (100 pts):
-    - Triplets: 20 pts ⭐ NEW!
+    - Triplets: 20 pts â­ NEW!
     - Frequency: 15 pts (reduced from 20)
     - ML: 15 pts
     - Pairs: 10 pts (reduced from 15)
     - Markov: 10 pts
-    - Sum (μ±σ): 10 pts (increased from 5)
+    - Sum (ÎźÂąĎ): 10 pts (increased from 5)
     - Gap: 10 pts
     - Zone: 5 pts (reduced from 10)
     - Parity: 5 pts (reduced from 10)
@@ -179,7 +179,7 @@ def fast_score_variant_v4(variant, frequencies, pair_matrix, triplet_scores, gap
     score = 0.0
     n = len(variant)
     
-    # 1. Triplets (20 points) ⭐ NEW!
+    # 1. Triplets (20 points) â­ NEW!
     triplet_sum = 0.0
     triplet_count = 0
     for i in range(n):
@@ -245,16 +245,16 @@ def fast_score_variant_v4(variant, frequencies, pair_matrix, triplet_scores, gap
     if markov_max > 0:
         score += (markov_sum / markov_max) * 10.0
     
-    # 6. Sum Range (10 points) - Statistical (μ±σ) ⭐ NEW!
+    # 6. Sum Range (10 points) - Statistical (ÎźÂąĎ) â­ NEW!
     total = 0
     for num in variant:
         total += num
     
-    # Optimal: μ ± 0.5σ
+    # Optimal: Îź Âą 0.5Ď
     optimal_low = sum_mu - 0.5 * sum_sigma
     optimal_high = sum_mu + 0.5 * sum_sigma
     
-    # Acceptable: μ ± σ
+    # Acceptable: Îź Âą Ď
     accept_low = sum_mu - sum_sigma
     accept_high = sum_mu + sum_sigma
     
@@ -402,7 +402,7 @@ class EnhancedMLPredictor:
         self.probabilities = {}
         self.clusters = None
         self.pca_model = None
-        self.scaler = None  # ⭐ NEW!
+        self.scaler = None  # â­ NEW!
         self.entropy_scores = {}
         
         self._calculate_advanced_features()
@@ -425,7 +425,7 @@ class EnhancedMLPredictor:
                     encoded[i, num-1] = 1
         
         try:
-            # ⭐ STANDARDSCALER!
+            # â­ STANDARDSCALER!
             self.scaler = StandardScaler()
             encoded_scaled = self.scaler.fit_transform(encoded)
             
@@ -534,7 +534,7 @@ class CoverageOptimizer:
     
     def __init__(self):
         self.covered_quads = set()
-        self.covered_triplets = set()  # ⭐ NEW!
+        self.covered_triplets = set()  # â­ NEW!
     
     @lru_cache(maxsize=10000)
     def _get_quads(self, variant_tuple):
@@ -731,7 +731,7 @@ class MLPredictor:
         """v4: With exponential decay"""
         recent_draws = self.draws[-500:] if len(self.draws) > 500 else self.draws
         
-        # ⭐ Exponential decay
+        # â­ Exponential decay
         weights = np.exp(np.linspace(-2, 0, len(recent_draws)))
         total_weight = np.sum(weights)
         
@@ -1273,11 +1273,11 @@ class LotteryAnalyzer:
         self.draws = []
         self.all_numbers_list = []
         self.frequency = Counter()
-        self.frequency_weighted = {}  # ⭐ NEW!
+        self.frequency_weighted = {}  # â­ NEW!
         self.pairs = Counter()
-        self.pairs_weighted = {}  # ⭐ NEW!
-        self.triplets = Counter()  # ⭐ USED MORE!
-        self.triplets_weighted = {}  # ⭐ NEW!
+        self.pairs_weighted = {}  # â­ NEW!
+        self.triplets = Counter()  # â­ USED MORE!
+        self.triplets_weighted = {}  # â­ NEW!
         self.quads = Counter()
         self.hot_numbers = []
         self.cold_numbers = []
@@ -1290,19 +1290,19 @@ class LotteryAnalyzer:
         # v4: Pre-calculated arrays
         self.frequencies_weighted_array = None
         self.pair_matrix_weighted = None
-        self.triplet_scores_array = None  # ⭐ NEW!
+        self.triplet_scores_array = None  # â­ NEW!
         self.gaps_array = None
         self.ml_probs_array = None
         self.markov_scores_array = None
         
-        # v4: Sum statistics (μ, σ)
+        # v4: Sum statistics (Îź, Ď)
         self.sum_mu = 402.0  # Will be calculated
         self.sum_sigma = 45.0  # Will be calculated
         
         # Max values
         self._freq_max = 0
         self._pair_max = 0
-        self._triplet_max = 0  # ⭐ NEW!
+        self._triplet_max = 0  # â­ NEW!
         self._ml_max = 0
         self._markov_max = 0
         
@@ -1397,7 +1397,7 @@ class LotteryAnalyzer:
             for pair in combinations(draw, 2):
                 self.pairs[tuple(sorted(pair))] += 1
         
-        # ⭐ Weighted TRIPLETS!
+        # â­ Weighted TRIPLETS!
         self.triplets_weighted = defaultdict(float)
         # Use only last 2000 draws
         recent_draws = self.draws[-2000:] if len(self.draws) > 2000 else self.draws
@@ -1425,11 +1425,11 @@ class LotteryAnalyzer:
         self._calculate_gaps()
         self._calculate_markov_weighted(weights, total_weight)
         
-        # ⭐ Sum statistics (μ, σ)
+        # â­ Sum statistics (Îź, Ď)
         self._calculate_sum_statistics()
 
     def _calculate_sum_statistics(self):
-        """v4: Calculate μ and σ for sum range"""
+        """v4: Calculate Îź and Ď for sum range"""
         all_sums = [sum(draw) for draw in self.draws]
         self.sum_mu = np.mean(all_sums)
         self.sum_sigma = np.std(all_sums)
@@ -1685,7 +1685,7 @@ class LotteryAnalyzer:
         if self._markov_max > 0:
             score += (markov_sum / self._markov_max) * 10.0
         
-        # 6. Sum (μ±σ) (10)
+        # 6. Sum (ÎźÂąĎ) (10)
         total = sum(variant)
         optimal_low = self.sum_mu - 0.5 * self.sum_sigma
         optimal_high = self.sum_mu + 0.5 * self.sum_sigma
@@ -1776,6 +1776,9 @@ class LotteryAnalyzer:
         """v3: Smart genetic (same as v3)"""
         
         def tournament_selection(population_with_scores, k=3):
+            k = min(k, len(population_with_scores))
+            if k == 0:
+                return population_with_scores[0][0]
             tournament = random.sample(population_with_scores, k)
             return max(tournament, key=lambda x: x[1])[0]
         
@@ -1893,8 +1896,12 @@ class LotteryAnalyzer:
         sorted_gaps = sorted(self.gaps.items(), key=lambda x: x[1], reverse=True)
         top_gap_numbers = [num for num, gap in sorted_gaps if gap > 0]
         
-        selected = random.sample(top_gap_numbers[:num_numbers * 2], 
-                                k=min(num_numbers, len(top_gap_numbers)))
+        available = top_gap_numbers[:num_numbers * 2]
+        sample_size = min(num_numbers, len(available))
+        if sample_size == 0:
+            return self.generate_variant_balanced(num_numbers)
+        
+        selected = random.sample(available, k=sample_size)
         
         while len(selected) < num_numbers:
             num = random.randint(1, 66)
@@ -1946,8 +1953,11 @@ class LotteryAnalyzer:
         """Balanced strategy"""
         selected = []
         
-        hot_sample = random.sample(self.hot_numbers[:15], k=min(5, num_numbers//2))
-        selected.extend(hot_sample)
+        available_hot = self.hot_numbers[:15]
+        hot_count = min(5, num_numbers//2, len(available_hot))
+        if hot_count > 0:
+            hot_sample = random.sample(available_hot, k=hot_count)
+            selected.extend(hot_sample)
         
         # Use weighted triplets for better selection
         top_triplets = sorted(self.triplets_weighted.items(), key=lambda x: x[1], reverse=True)[:10]
@@ -1959,7 +1969,9 @@ class LotteryAnalyzer:
         
         available = list(triplet_numbers - set(selected))
         if available:
-            selected.extend(random.sample(available, k=min(4, num_numbers - len(selected))))
+            sample_size = min(4, num_numbers - len(selected), len(available))
+            if sample_size > 0:
+                selected.extend(random.sample(available, k=sample_size))
         
         while len(selected) < num_numbers:
             num = random.randint(1, 66)
@@ -1976,7 +1988,16 @@ class LotteryAnalyzer:
     
     def generate_variant_hot(self, num_numbers=12):
         """Hot numbers"""
-        return sorted(random.sample(self.hot_numbers[:20], num_numbers))
+        available = self.hot_numbers[:20]
+        count = min(num_numbers, len(available))
+        if count < num_numbers:
+            result = list(available)
+            while len(result) < num_numbers:
+                num = random.randint(1, 66)
+                if num not in result:
+                    result.append(num)
+            return sorted(result[:num_numbers])
+        return sorted(random.sample(available, count))
     
     def generate_variant_pairs(self, num_numbers=12):
         """Pairs strategy"""
@@ -2054,8 +2075,8 @@ def load_and_analyze_data_cached(file_content):
 # ============================================================================
 
 st.set_page_config(
-    page_title="🎲 Lottery Analyzer Pro v4",
-    page_icon="🎲",
+    page_title="đ˛ Lottery Analyzer Pro v4",
+    page_icon="đ˛",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -2221,27 +2242,27 @@ apply_custom_css(st.session_state.dark_mode)
 col1, col2, col3 = st.columns([1, 2, 1])
 
 with col1:
-    if st.button("🌙 Toggle"):
+    if st.button("đ Toggle"):
         st.session_state.dark_mode = not st.session_state.dark_mode
         st.rerun()
 
 with col2:
     st.markdown("""
     <div class="main-header">
-        <h1>🎲 Lottery Analyzer Pro v5.0</h1>
-        <p style="color: white; margin: 0;">⚡ Triplets + Decay + StandardScaler + μ±σ | Statistically Sound</p>
+        <h1>đ˛ Lottery Analyzer Pro v5.0</h1>
+        <p style="color: white; margin: 0;">âĄ Triplets + Decay + StandardScaler + ÎźÂąĎ | Statistically Sound</p>
     </div>
     """, unsafe_allow_html=True)
 
 with col3:
-    st.markdown(f"**v5.0** | {'🌙' if st.session_state.dark_mode else '☀️'}")
+    st.markdown(f"**v5.0** | {'đ' if st.session_state.dark_mode else 'âď¸'}")
 
 # ============================================================================
 # SIDEBAR
 # ============================================================================
 
 with st.sidebar:
-    st.header("📁 Data Upload")
+    st.header("đ Data Upload")
     
     uploaded_file = st.file_uploader(
         "Upload lottery history (TXT)",
@@ -2253,57 +2274,57 @@ with st.sidebar:
         try:
             content = uploaded_file.read().decode('utf-8')
             
-            if st.button("🔄 Analyze", type="primary"):
-                with st.spinner("🔍 Analyzing..."):
+            if st.button("đ Analyze", type="primary"):
+                with st.spinner("đ Analyzing..."):
                     st.session_state.analyzer = load_and_analyze_data_cached(content)
                     st.session_state.analyzed = True
-                    st.success("✅ Done!")
+                    st.success("â Done!")
                     st.balloons()
         except Exception as e:
-            st.error(f"❌ Error: {e}")
+            st.error(f"â Error: {e}")
     
     if st.session_state.analyzed:
-        st.success("✅ Loaded!")
+        st.success("â Loaded!")
         analyzer = st.session_state.analyzer
         
         st.markdown("---")
-        st.subheader("📊 Stats")
+        st.subheader("đ Stats")
         
         st.metric("Draws", len(analyzer.draws))
         st.metric("Numbers", len(analyzer.frequency))
         st.metric("Triplets", len(analyzer.triplets))
         
         st.markdown("---")
-        st.subheader("⚡ v5 Features")
+        st.subheader("âĄ v5 Features")
         
-        st.success("✅ Triplets (20 pts)")
-        st.success("✅ Decay Temporal")
-        st.success("✅ StandardScaler")
-        st.success("✅ Sum μ±σ")
-        st.success("✅ Diversity max=7")
+        st.success("â Triplets (20 pts)")
+        st.success("â Decay Temporal")
+        st.success("â StandardScaler")
+        st.success("â Sum ÎźÂąĎ")
+        st.success("â Diversity max=7")
         
         if NUMBA_AVAILABLE:
-            st.success("✅ Numba JIT")
+            st.success("â Numba JIT")
         else:
-            st.info("ℹ️ Fallback OK")
+            st.info("âšď¸ Fallback OK")
         
         if SKLEARN_AVAILABLE:
-            st.success("✅ ML Active")
+            st.success("â ML Active")
 
 # ============================================================================
 # MAIN
 # ============================================================================
 
 if not st.session_state.analyzed:
-    st.info("👈 Upload data")
+    st.info("đ Upload data")
     st.markdown("""
-    ### 🚀 v5.0 Logic Fixes:
-    - ✅ **TRIPLETS (20 pts)**: Most important for 4/4!
-    - ✅ **Decay Temporal**: Recent draws matter more
-    - ✅ **StandardScaler**: Correct PCA/K-Means
-    - ✅ **Sum μ±σ**: Statistical, not arbitrary
-    - ✅ **Diversity max=7**: Less strict (was 4)
-    - ✅ **Rebalanced Scoring**: Triplets > Pairs
+    ### đ v5.0 Logic Fixes:
+    - â **TRIPLETS (20 pts)**: Most important for 4/4!
+    - â **Decay Temporal**: Recent draws matter more
+    - â **StandardScaler**: Correct PCA/K-Means
+    - â **Sum ÎźÂąĎ**: Statistical, not arbitrary
+    - â **Diversity max=7**: Less strict (was 4)
+    - â **Rebalanced Scoring**: Triplets > Pairs
     
     **Expected Results:**
     - Avg Score: **88-90** (vs 83 in v3)
@@ -2318,12 +2339,12 @@ analyzer = st.session_state.analyzer
 # TABS
 # ============================================================================
 
-tab1, tab2 = st.tabs(["🎯 Generate 1150", "📊 Info"])
+tab1, tab2 = st.tabs(["đŻ Generate 1150", "đ Info"])
 
 with tab1:
-    st.header("🎯 Generate 1150 (v4)")
+    st.header("đŻ Generate 1150 (v4)")
     
-    st.success("⚡ **v5 LOGIC**: Triplets 20pts + Decay + μ±σ + StandardScaler + max_overlap=7")
+    st.success("âĄ **v5 LOGIC**: Triplets 20pts + Decay + ÎźÂąĎ + StandardScaler + max_overlap=7")
     
     col1, col2, col3 = st.columns(3)
     
@@ -2331,51 +2352,51 @@ with tab1:
         num_numbers = st.slider("Numbers", 4, 20, 12)
     
     with col2:
-        use_parallel = st.checkbox("⚡ Parallel", value=True)
+        use_parallel = st.checkbox("âĄ Parallel", value=True)
     
     with col3:
-        use_coverage_opt = st.checkbox("🎯 Coverage", value=True)
+        use_coverage_opt = st.checkbox("đŻ Coverage", value=True)
     
-    st.subheader("📋 Strategy %")
+    st.subheader("đ Strategy %")
     
     col1, col2 = st.columns(2)
     
     with col1:
-        freq_pct = st.slider("🔥 Hot %", 0, 100, 15)
-        ml_pct = st.slider("🤖 ML %", 0, 100, 20)
-        genetic_pct = st.slider("🧬 Genetic %", 0, 100, 20)
-        markov_pct = st.slider("⛓️ Markov %", 0, 100, 15)
+        freq_pct = st.slider("đĽ Hot %", 0, 100, 15)
+        ml_pct = st.slider("đ¤ ML %", 0, 100, 20)
+        genetic_pct = st.slider("đ§Ź Genetic %", 0, 100, 20)
+        markov_pct = st.slider("âď¸ Markov %", 0, 100, 15)
     
     with col2:
-        gap_pct = st.slider("🕰️ Gap %", 0, 100, 10)
-        pca_pct = st.slider("🧠 PCA %", 0, 100, 10)
-        entropy_pct = st.slider("🎲 Entropy %", 0, 100, 5)
-        balanced_pct = st.slider("⚖️ Balanced %", 0, 100, 5)
+        gap_pct = st.slider("đ°ď¸ Gap %", 0, 100, 10)
+        pca_pct = st.slider("đ§  PCA %", 0, 100, 10)
+        entropy_pct = st.slider("đ˛ Entropy %", 0, 100, 5)
+        balanced_pct = st.slider("âď¸ Balanced %", 0, 100, 5)
     
     total_pct = freq_pct + ml_pct + genetic_pct + markov_pct + gap_pct + pca_pct + entropy_pct + balanced_pct
     
     if total_pct != 100:
-        st.warning(f"⚠️ Total: {total_pct}% (need 100%)")
+        st.warning(f"â ď¸ Total: {total_pct}% (need 100%)")
     
     st.markdown("---")
     
-    st.subheader("🆕 v5 Advanced ML")
+    st.subheader("đ v5 Advanced ML")
     col1, col2, col3 = st.columns(3)
     with col1:
-        use_rl = st.checkbox("🧠 RL Agent", value=True, help="Reinforcement Learning")
+        use_rl = st.checkbox("đ§  RL Agent", value=True, help="Reinforcement Learning")
     with col2:
-        use_patterns = st.checkbox("🔍 Patterns", value=True, help="Apriori Mining")
+        use_patterns = st.checkbox("đ Patterns", value=True, help="Apriori Mining")
     with col3:
-        use_features = st.checkbox("📊 Features", value=True, help="Feature Engineering")
+        use_features = st.checkbox("đ Features", value=True, help="Feature Engineering")
     
     st.markdown("---")
     
-    if st.button("🚀 GENERATE 1150 (v5)", type="primary", use_container_width=True):
-        with st.spinner("⚡ Generating with v5 advanced ML..."):
+    if st.button("đ GENERATE 1150 (v5)", type="primary", use_container_width=True):
+        with st.spinner("âĄ Generating with v5 advanced ML..."):
             progress_bar = st.progress(0)
             status_text = st.empty()
             
-            status_text.text("📊 Step 1/4: Pool (8500)...")
+            status_text.text("đ Step 1/4: Pool (8500)...")
             progress_bar.progress(10)
             
             pool_size = 4000
@@ -2430,14 +2451,14 @@ with tab1:
             
             progress_bar.progress(30)
             
-            status_text.text("💯 Step 2/4: Scoring (v5 logic)...")
+            status_text.text("đŻ Step 2/4: Scoring (v5 logic)...")
             
             scores = score_variants_parallel_v4(analyzer, variants_pool)
             
             variants_with_scores = list(zip(variants_pool, scores))
             progress_bar.progress(50)
             
-            status_text.text("🎨 Step 3/4: Diversity (max=7)...")
+            status_text.text("đ¨ Step 3/4: Diversity (max=7)...")
             
             if NUMBA_AVAILABLE:
                 variants_array = np.array([list(v) for v in variants_pool], dtype=np.int32)
@@ -2450,7 +2471,7 @@ with tab1:
             
             progress_bar.progress(70)
             
-            status_text.text("🎯 Step 4/4: Coverage (Triplets priority)...")
+            status_text.text("đŻ Step 4/4: Coverage (Triplets priority)...")
             
             if use_coverage_opt:
                 optimizer = CoverageOptimizer()
@@ -2477,11 +2498,11 @@ with tab1:
             status_text.empty()
             progress_bar.empty()
             
-            st.success("✅ 1150 VARIANTS (v4)!")
+            st.success("â 1150 VARIANTS (v4)!")
             st.balloons()
             
             st.markdown("---")
-            st.subheader("📊 Stats")
+            st.subheader("đ Stats")
             
             col1, col2, col3, col4 = st.columns(4)
             
@@ -2502,7 +2523,7 @@ with tab1:
             
             if coverage_stats:
                 st.markdown("---")
-                st.subheader("🎯 Coverage (v4)")
+                st.subheader("đŻ Coverage (v4)")
                 
                 col1, col2, col3 = st.columns(3)
                 
@@ -2518,14 +2539,14 @@ with tab1:
                     st.metric("Win Chance", f"{coverage_stats['estimated_win_chance']:.1f}%")
                 
                 st.info(f"""
-                📊 **v5 Coverage**: {coverage_stats['covered_quads']:,} quads + 
+                đ **v5 Coverage**: {coverage_stats['covered_quads']:,} quads + 
                 {coverage_stats['covered_triplets']:,} triplets = 
                 ~{coverage_stats['estimated_win_chance']:.1f}% win chance per draw!
                 """)
     
     if st.session_state.generated_variants:
         st.markdown("---")
-        st.subheader("📋 Variants")
+        st.subheader("đ Variants")
         
         col1, col2, col3 = st.columns(3)
         
@@ -2536,7 +2557,7 @@ with tab1:
             ])
             
             st.download_button(
-                "📥 TXT (4/4)",
+                "đĽ TXT (4/4)",
                 variants_txt,
                 "lottery_1150_v5.txt",
                 "text/plain",
@@ -2557,7 +2578,7 @@ with tab1:
             csv = df.to_csv(index=False)
             
             st.download_button(
-                "📥 CSV",
+                "đĽ CSV",
                 csv,
                 "lottery_1150_v5.csv",
                 "text/csv",
@@ -2565,13 +2586,13 @@ with tab1:
             )
         
         with col3:
-            if st.button("🗑️ Clear", use_container_width=True):
+            if st.button("đď¸ Clear", use_container_width=True):
                 st.session_state.generated_variants = []
                 st.rerun()
         
-        st.info("📝 **Format**: `1, 4 10 52 53` = index + 4 numbers")
+        st.info("đ **Format**: `1, 4 10 52 53` = index + 4 numbers")
         
-        st.markdown("### 🔝 Top 20 (v5 Scoring)")
+        st.markdown("### đ Top 20 (v5 Scoring)")
         
         for idx, (variant, score) in enumerate(st.session_state.generated_variants[:20], 1):
             with st.expander(f"#{idx} - Score: {score:.1f} | 4/4: {' '.join(map(str, variant[:4]))}"):
@@ -2581,26 +2602,26 @@ with tab1:
                 st.markdown(f"**Rest:** {remaining_8}", unsafe_allow_html=True)
 
 with tab2:
-    st.header("ℹ️ v5.0 Info")
+    st.header("âšď¸ v5.0 Info")
     
     st.markdown("""
     **Lottery Analyzer Pro v5.0 - Advanced ML Edition**
     
-    **🆕 V5 Advanced Technologies:**
-    1. 🧠 **Reinforcement Learning**: Q-Learning agent (bonus +5 pts)
-    2. ⚖️ **Ensemble Methods**: Meta-model stacking (bonus +2 pts)
-    3. 🎯 **Feature Engineering**: Rolling stats, trends, lags (bonus +3 pts)
-    4. 🔬 **Bayesian Optimization**: Auto-tune score weights
-    5. 📈 **Time Series CV**: Adaptive decay & window optimization
-    6. 🔍 **Pattern Mining**: Apriori/FP-Growth rules (bonus +5 pts)
+    **đ V5 Advanced Technologies:**
+    1. đ§  **Reinforcement Learning**: Q-Learning agent (bonus +5 pts)
+    2. âď¸ **Ensemble Methods**: Meta-model stacking (bonus +2 pts)
+    3. đŻ **Feature Engineering**: Rolling stats, trends, lags (bonus +3 pts)
+    4. đŹ **Bayesian Optimization**: Auto-tune score weights
+    5. đ **Time Series CV**: Adaptive decay & window optimization
+    6. đ **Pattern Mining**: Apriori/FP-Growth rules (bonus +5 pts)
     
-    **📊 Scoring v5 (Base 100 + Bonus 15 pts):**
+    **đ Scoring v5 (Base 100 + Bonus 15 pts):**
     - Triplets: 20
     - Frequency: 15
     - ML: 15
     - Pairs: 10
     - Markov: 10
-    - Sum (μ±σ): 10
+    - Sum (ÎźÂąĎ): 10
     - Gap: 10
     - Zone: 5
     - Parity: 5
@@ -2610,11 +2631,11 @@ with tab2:
     - **+ Ensemble Bonus: 2**
     
     **V4 Fixes (maintained):**
-    - ✅ Triplets indexing (n-1)
-    - ✅ Markov indexing (n-1)
-    - ✅ Deduplication
-    - ✅ Adaptive weights
-    - ✅ max_overlap=7
+    - â Triplets indexing (n-1)
+    - â Markov indexing (n-1)
+    - â Deduplication
+    - â Adaptive weights
+    - â max_overlap=7
     
     **Expected Performance:**
     - Avg Score: 92-98 (vs 88-90 v4)
@@ -2623,13 +2644,13 @@ with tab2:
     
     **Version:** 5.0.0  
     **Date:** November 1, 2025  
-    **Status:** ✅ All Technologies Integrated
+    **Status:** â All Technologies Integrated
     """)
 
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center; padding: 2rem; opacity: 0.7;">
-    <p>🎲 Lottery Analyzer Pro v5.0 - Advanced ML Edition</p>
-    <p>🧠 RL + Ensemble + Features + Bayesian + TimeSeries + Patterns</p>
+    <p>đ˛ Lottery Analyzer Pro v5.0 - Advanced ML Edition</p>
+    <p>đ§  RL + Ensemble + Features + Bayesian + TimeSeries + Patterns</p>
 </div>
 """, unsafe_allow_html=True)
