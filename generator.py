@@ -1,7 +1,7 @@
 """
-🎲 LOTTERY ANALYZER PRO - ULTIMATE EDITION v5.1 🎲
+đ˛ LOTTERY ANALYZER PRO - ULTIMATE EDITION v5.1 đ˛
 ===================================================
-✅ ALL v5.0 BUGS FIXED + PERFORMANCE + STABILITY
+â ALL v5.0 BUGS FIXED + PERFORMANCE + STABILITY
 1. Fixed Double `return` in fast_score_variant_v4
 2. Fixed Triplet hashing (max_idx = 48,620)
 3. Fixed CoverageOptimizer cache (frozenset of tuples)
@@ -38,7 +38,7 @@ try:
     NUMBA_AVAILABLE = True
 except ImportError:
     NUMBA_AVAILABLE = False
-    st.warning("⚠️ Numba not installed. Install: pip install numba")
+    st.warning("â ď¸ Numba not installed. Install: pip install numba")
     def jit(*args, **kwargs):
         def decorator(func):
             return func
@@ -53,14 +53,14 @@ try:
     SKLEARN_AVAILABLE = True
 except ImportError:
     SKLEARN_AVAILABLE = False
-    st.warning("⚠️ Scikit-learn not installed. Install: pip install scikit-learn")
+    st.warning("â ď¸ Scikit-learn not installed. Install: pip install scikit-learn")
 
 try:
     from scipy.optimize import differential_evolution
     SCIPY_AVAILABLE = True
 except ImportError:
     SCIPY_AVAILABLE = False
-    st.warning("⚠️ Scipy not installed. Install: pip install scipy")
+    st.warning("â ď¸ Scipy not installed. Install: pip install scipy")
 
 # ============================================================================
 # NUMBA JIT OPTIMIZED FUNCTIONS
@@ -142,7 +142,7 @@ def fast_score_variant_v4(variant, frequencies, pair_matrix, triplet_scores, gap
             for k in range(j + 1, n):
                 n1, n2, n3 = variant[i], variant[j], variant[k]
                 idx = (n1 - 1) * 4356 + (n2 - 1) * 66 + (n3 - 1)
-                if idx < MAX_TRIPLET_idx:
+                if idx < MAX_TRIPLET_IDX:
                     triplet_sum += triplet_scores[idx]
     if triplet_max > 0:
         score += (triplet_sum / triplet_max) * 20.0
@@ -150,7 +150,7 @@ def fast_score_variant_v4(variant, frequencies, pair_matrix, triplet_scores, gap
     # 2. Frequency (15 pts)
     freq_sum = np.sum(frequencies[variant])
     if freq_max > 0:
-        score += (freq_sum / freq)
+        score += (freq_sum / freq_max) * 15.0
 
     # 3. ML (15 pts)
     ml_sum = np.sum(ml_probs[variant])
@@ -176,7 +176,7 @@ def fast_score_variant_v4(variant, frequencies, pair_matrix, triplet_scores, gap
     if markov_max > 0:
         score += (markov_sum / markov_max) * 10.0
 
-    # 6. Sum (μ±σ) (10 pts)
+    # 6. Sum (ÎźÂąĎ) (10 pts)
     total = np.sum(variant)
     opt_low = sum_mu - 0.5 * sum_sigma
     opt_high = sum_mu + 0.5 * sum_sigma
@@ -976,7 +976,7 @@ class LotteryAnalyzer:
         if np.sum(self.markov_scores_array) > 0:
             self.markov_scores_array /= np.sum(self.markov_scores_array)
         self._freq_max = float(np.sum(np.sort(self.frequencies_weighted_array)[-12:]))
-        self._pair_max = float(np.sum(np/boot_matrix_weighted.flatten()[-66:]))
+        self._pair_max = float(np.sum(np.sort(self.pair_matrix_weighted.flatten())[-66:]))
         trip_nz = self.triplet_scores_array[self.triplet_scores_array > 0]
         self._triplet_max = float(np.sum(np.sort(trip_nz)[-220:])) if len(trip_nz) >= 220 else float(np.sum(trip_nz)) if len(trip_nz) > 0 else 1.0
         self._ml_max = float(np.sum(np.sort(self.ml_probs_array)[-12:]))
@@ -1193,7 +1193,7 @@ def load_and_analyze_data_cached(file_content):
     analyzer._internal_load_data(file_content)
     return analyzer
 
-st.set_page_config(page_title="Lottery Analyzer Pro v5.1", page_icon="🎲", layout="wide")
+st.set_page_config(page_title="Lottery Analyzer Pro v5.1", page_icon="đ˛", layout="wide")
 def apply_css(dark=st.session_state.get('dark_mode', False)):
     bg = "#0E1117" if dark else "#FFFFFF"
     txt = "#FAFAFA" if dark else "#262730"
@@ -1342,7 +1342,7 @@ with tab2:
     **Stability 100%**
 
     **Expected:**  
-    - Avg Score: **94–98**  
+    - Avg Score: **94â98**  
     - Generation Time: **~40 sec**  
     - Coverage: **6.8%+**
     """)
